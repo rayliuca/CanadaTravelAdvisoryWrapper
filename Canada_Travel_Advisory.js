@@ -57,10 +57,10 @@
 		// Iterate over the JSON object
 		for (var i = 0, len = feat.length; i < len; i++) {
 			tableData.push({
-				"advisory-state": feat[i].advisory-state,
-				"friendly-date": feat[i].properties.friendly-date,
-				"country-eng": feat[i].properties.country-eng,
-				"country-iso": feat[i].country-iso
+				"advisory-state": feat[i].advisory_state,
+				"friendly-date": feat[i].properties.friendly_date,
+				"country-eng": feat[i].properties.country_eng,
+				"country-iso": feat[i].country_iso
 			});
 		}
 
