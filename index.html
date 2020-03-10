@@ -24,24 +24,22 @@
 <!-- <script>
 var request = new XMLHttpRequest()
 var data=[]
-request.open('GET', 'https://travel.gc.ca/travelling/advisories', true)
-request.setRequestHeader("Origin", "travel.gc.ca")
+request.open('GET', 'https://cors-anywhere.herokuapp.com/https://travel.gc.ca/travelling/advisories', true)
+request.setRequestHeader("x-requested-with", "travel.gc.ca")
 request.onload = function() {
   // Begin accessing JSON data here
   data = (this.response)
   console.log(data)
   if (request.status >= 200 && request.status < 400) {
-    data.forEach(movie => {
-      console.log(movie.title)
-    })
+	extractJSON = data.slice(data.indexOf("indexUpdatedDataJSON"), data.indexOf("// Extract the right content from the JSON data based on the language"))
+eval(extractJSON)
   } else {
     console.log('error')
   }
 }
 request.send()
 
-extractJSON = data.slice(data.indexOf("indexUpdatedDataJSON"), data.indexOf("// Extract the right content from the JSON data based on the language"))
-eval(extractJSON)
+
 
 
 
