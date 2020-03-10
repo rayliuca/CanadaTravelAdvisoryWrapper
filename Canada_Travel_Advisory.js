@@ -11,7 +11,7 @@
         }, {
             id: "friendly_date",
             alias: "magnitude",
-            dataType: tableau.dataTypeEnum.DateTime
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "country_eng",
             alias: "Country",
@@ -54,7 +54,7 @@
 
 			// Iterate over the JSON object
 			feat_keys=Object.keys(feat)
-			for (var i = 0, len = feat.length; i < len; i++) {
+			for (var i = 0, len = feat_keys.length; i < len; i++) {
 				tableData.push({
 					"advisory_state": feat[feat_keys[i]]["advisory-state"],
 					"friendly_date": feat[feat_keys[i]]["friendly-date"],
