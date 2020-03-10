@@ -9,7 +9,7 @@
             alias: "Advisory State",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "friendly_date",
+            id: "date_published",
             dataType: tableau.dataTypeEnum.dateTime
         }, {
             id: "country_eng",
@@ -29,9 +29,9 @@
     };
 
     // Download the data
-	console.log("entering myConnector.getData")
+	// console.log("entering myConnector.getData")
     myConnector.getData = function(table, doneCallback) {
-		console.log("in myConnector.getData")
+		// console.log("in myConnector.getData")
         var request = new XMLHttpRequest()
 		var data=[]
 		
@@ -40,16 +40,16 @@
 		request.onload = function() {
 		  // Begin accessing JSON data here
 		  data = (this.response)
-		  console.log(data)
+		  // console.log(data)
 		  if (request.status >= 200 && request.status < 400) {
-			  console.log("request.status= "+request.status)
+			  // console.log("request.status= "+request.status)
 			  
 			extractJSON = data.slice(data.indexOf("indexUpdatedDataJSON"), data.indexOf("// Extract the right content from the JSON data based on the language"))
 			eval(extractJSON)
 			
 			var feat = indexUpdatedDataJSON.data
 			
-			console.log(feat)
+			// console.log(feat)
 				tableData = [];
 
 			// Iterate over the JSON object
@@ -57,12 +57,12 @@
 			for (var i = 0, len = feat_keys.length; i < len; i++) {
 				tableData.push({
 					"advisory_state": feat[feat_keys[i]]["advisory-state"],
-					"friendly_date": feat[feat_keys[i]]["friendly-date"],
+					"date_published": feat[feat_keys[i]]["date-published"]["asp"],
 					"country_eng": feat[feat_keys[i]]["country-eng"],
 					"country_iso": feat[feat_keys[i]]["country-iso"]
 				});
 			}
-
+			console.log(tableData)
 			table.appendRows(tableData);
 			doneCallback();
 		  } else {
