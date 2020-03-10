@@ -10,14 +10,14 @@
             dataType: tableau.dataTypeEnum.float
         }, {
             id: "date_published",
-            dataType: tableau.dataTypeEnum.dateTime
+            dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "country_eng",
             alias: "Country",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.geographicRoleEnum.country_region
         }, {
             id: "country_iso",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.geographicRoleEnum.country_region
         }];
 
         var tableSchema = {
