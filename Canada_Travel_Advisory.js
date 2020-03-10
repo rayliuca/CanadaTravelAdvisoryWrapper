@@ -10,8 +10,7 @@
             dataType: tableau.dataTypeEnum.float
         }, {
             id: "friendly_date",
-            alias: "magnitude",
-            dataType: tableau.dataTypeEnum.datetime
+            dataType: tableau.dataTypeEnum.dateTime
         }, {
             id: "country_eng",
             alias: "Country",
