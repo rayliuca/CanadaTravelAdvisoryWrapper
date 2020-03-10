@@ -5,6 +5,9 @@
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
+            id: "country_iso",
+            dataType: tableau.geographicRoleEnum.country_region
+        }, {
             id: "advisory_state",
             alias: "Advisory State",
             dataType: tableau.dataTypeEnum.float
@@ -15,13 +18,11 @@
             id: "country_eng",
             alias: "Country",
             dataType: tableau.geographicRoleEnum.country_region
-        }, {
-            id: "country_iso",
-            dataType: tableau.geographicRoleEnum.country_region
-        }];
+        }, ];
 
         var tableSchema = {
             id: "canada_travel_advisory_feed",
+			alias: "Newest Global Affairs Canada Travel Advisories"
             columns: cols
         };
 
