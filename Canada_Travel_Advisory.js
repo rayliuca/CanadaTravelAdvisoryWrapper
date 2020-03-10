@@ -5,19 +5,19 @@
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "advisory-state",
+            id: "advisory_state",
             alias: "Advisory State",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "friendly-date",
+            id: "friendly_date",
             alias: "magnitude",
             dataType: tableau.dataTypeEnum.float
         }, {
-            id: "country-eng",
+            id: "country_eng",
             alias: "Country",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "country-iso",
+            id: "country_iso",
             dataType: tableau.dataTypeEnum.string
         }];
 
