@@ -34,8 +34,7 @@
         var request = new XMLHttpRequest()
 		var data=[]
 		
-		request.open('GET', 'https://travel.gc.ca/travelling/advisories', true)
-		request.setRequestHeader("Origin", "travel.gc.ca")
+		request.open('GET', 'https://cors-anywhere.herokuapp.com/https://travel.gc.ca/travelling/advisories', true)
 		request.onload = function() {
 		  // Begin accessing JSON data here
 		  data = (this.response)
