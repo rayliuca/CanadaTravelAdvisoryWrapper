@@ -30,7 +30,9 @@
     };
 
     // Download the data
+	console.log("entering myConnector.getData")
     myConnector.getData = function(table, doneCallback) {
+		console.log("in myConnector.getData")
         var request = new XMLHttpRequest()
 		var data=[]
 		
@@ -40,31 +42,32 @@
 		  data = (this.response)
 		  console.log(data)
 		  if (request.status >= 200 && request.status < 400) {
+			  console.log("request.status= "+request.status)
+			  
+			extractJSON = data.slice(data.indexOf("indexUpdatedDataJSON"), data.indexOf("// Extract the right content from the JSON data based on the language"))
+			eval(extractJSON)
+			
+			var feat = indexUpdatedDataJSON.data
+			
+			console.log(feat)
+				tableData = [];
 
+			// Iterate over the JSON object
+			for (var i = 0, len = feat.length; i < len; i++) {
+				tableData.push({
+					"advisory-state": feat[i].advisory_state,
+					"friendly-date": feat[i].properties.friendly_date,
+					"country-eng": feat[i].properties.country_eng,
+					"country-iso": feat[i].country_iso
+				});
+			}
+
+			table.appendRows(tableData);
+			doneCallback();
 		  } else {
 		  }
 		}
 		request.send()
-
-		extractJSON = data.slice(data.indexOf("indexUpdatedDataJSON"), data.indexOf("// Extract the right content from the JSON data based on the language"))
-		eval(extractJSON)
-		
-		var feat = indexUpdatedDataJSON.data
-		console.log(feat)
-			tableData = [];
-
-		// Iterate over the JSON object
-		for (var i = 0, len = feat.length; i < len; i++) {
-			tableData.push({
-				"advisory-state": feat[i].advisory_state,
-				"friendly-date": feat[i].properties.friendly_date,
-				"country-eng": feat[i].properties.country_eng,
-				"country-iso": feat[i].country_iso
-			});
-		}
-
-		table.appendRows(tableData);
-		doneCallback();
 
     };
 
