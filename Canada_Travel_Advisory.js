@@ -22,7 +22,7 @@
 
         var tableSchema = {
             id: "canada_travel_advisory_feed",
-			alias: "Newest Global Affairs Canada Travel Advisories"
+			alias: "Newest Global Affairs Canada Travel Advisories",
             columns: cols
         };
 
