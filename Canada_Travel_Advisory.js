@@ -4,21 +4,21 @@
 
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
-        var cols = [/* {
+        var cols = [ {
             id: "country_iso",
             dataType: tableau.geographicRoleEnum.country_region
         }, {
             id: "advisory_state",
             alias: "Advisory State",
-            dataType: tableau.dataTypeEnum.float
-        }, {
+            dataType: tableau.dataTypeEnum.int 
+        }/* , {
             id: "date_published",
             dataType: tableau.dataTypeEnum.datetime
         }, {
             id: "country_eng",
             alias: "Country",
             dataType: tableau.geographicRoleEnum.country_region
-        }   */];
+        }    */];
 
         var tableSchema = {
             id: "canada_travel_advisory_feed",
@@ -56,12 +56,12 @@
 			// Iterate over the JSON object
 			feat_keys=Object.keys(feat)
 			for (var i = 0, len = feat_keys.length; i < len; i++) {
-				// tableData.push({
-					// "advisory_state": feat[feat_keys[i]]["advisory-state"],
+				tableData.push({
+					"advisory_state": feat[feat_keys[i]]["advisory-state"],
 					// "date_published": feat[feat_keys[i]]["date-published"]["asp"],
 					// "country_eng": feat[feat_keys[i]]["country-eng"],
-					// "country_iso": feat[feat_keys[i]]["country-iso"]
-				// });
+					"country_iso": feat[feat_keys[i]]["country-iso"]
+				});
 			}
 			console.log(tableData)
 			table.appendRows(tableData);
