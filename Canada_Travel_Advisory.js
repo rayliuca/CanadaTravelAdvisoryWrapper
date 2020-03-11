@@ -11,10 +11,10 @@
             id: "advisory_state",
             alias: "Advisory State",
             dataType: tableau.dataTypeEnum.float
-        }, {
+        }/* , {
             id: "date_published",
             dataType: tableau.dataTypeEnum.datetime
-        }, {
+        } */, {
             id: "country_eng",
             alias: "Country",
             dataType: tableau.geographicRoleEnum.country_region
